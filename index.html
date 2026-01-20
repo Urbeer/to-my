@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>to my</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: monospace;
+      overflow: hidden;
+    }
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+    .text {
+      position: fixed;
+      bottom: 10%;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+<video id="video" autoplay playsinline></video>
+<div class="text">to ty. teraz.</div>
+
+<script>
+  navigator.mediaDevices.getUserMedia({
+    video: { facingMode: "user" },
+    audio: false
+  })
+  .then(stream => {
+    document.getElementById("video").srcObject = stream;
+  })
+  .catch(() => {
+    document.querySelector(".text").innerText = "brak dostępu";
+  });
+</script>
+
+</body>
+</html>
