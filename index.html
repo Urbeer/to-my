@@ -32,9 +32,18 @@
 <body>
 
 <video id="video" autoplay playsinline></video>
-<div class="text">to ty. teraz.</div>
+<div class="meta">
+  czas: teraz<br>
+  status: zapisany<br>
+  skany: <span id="count">…</span>
+</div>
 
 <script>
+  fetch('https://api.countapi.xyz/hit/to-my/scan')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('count').innerText = data.value;
+  })
   navigator.mediaDevices.getUserMedia({
     video: { facingMode: "user" },
     audio: false
@@ -48,4 +57,5 @@
 </script>
 
 </body>
+
 </html>
