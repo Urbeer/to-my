@@ -36,11 +36,6 @@
   
 
 <script>
-  fetch('https://api.countapi.xyz/hit/to-my/scan')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('count').innerText = data.value;
-  })
   navigator.mediaDevices.getUserMedia({
     video: { facingMode: "user" },
     audio: false
@@ -56,4 +51,5 @@
 </body>
 
 </html>
+
 
